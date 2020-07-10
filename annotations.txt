@@ -1,2 +1,4 @@
 yarn add uuidv4 -- library to use random identify
 yarn add date-fns -- library to use date
+
+yarn add typorm pg - to add typorm and postgres driver
