@@ -11,3 +11,5 @@ yarn typeorm migration:create -n CreateAppointments
 yarn typeorm migration:run - to run migrations
 
 yarn typeorm migration:revert - to change migration that has not yet been pushed to the remote repository
+
+yarn typeorm migration:show - to show all migrations runned
