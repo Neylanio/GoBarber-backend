@@ -2,3 +2,12 @@ yarn add uuidv4 -- library to use random identify
 yarn add date-fns -- library to use date
 
 yarn add typorm pg - to add typorm and postgres driver
+
+yarn typeorm - run typeorm cli using typescript
+
+yarn typeorm migration:create -n CreateAppointments
+
+
+yarn typeorm migration:run - to run migrations
+
+yarn typeorm migration:revert - to change migration that has not yet been pushed to the remote repository
