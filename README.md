@@ -3,11 +3,6 @@
 ## __Commands__
 
 * ### yarn
-* ### yarn add express
-* ### yarn add typescript -D
-* ### yarn tsc --init
-> Change 'rootDir' from tsconfig.json to './src'
-> Change 'outDir' from tsconfig.json to './dist'
 
 ## __Help__
 
