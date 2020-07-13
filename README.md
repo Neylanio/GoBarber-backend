@@ -2,7 +2,7 @@
 
 ## __Commands__
 
-* ### yarn
+> * ### yarn
 
 ## __Help__
 
