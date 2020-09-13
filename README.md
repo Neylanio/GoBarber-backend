@@ -12,7 +12,7 @@
 > * ### yarn typeorm migration:run
 > * ### yarn dev:server
 
-This application must to do: logon, CRUD_USER and CRUD_APPOINTMENTS.
+This application must to do: Logon, Create_User and Create_APPOINTMENTS.
 
 ---
 
