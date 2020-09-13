@@ -1,6 +1,6 @@
 # __Project to manager Barbershops__
 
-## :rocket: About the project
+## About this project
 
 **Techs:**
 - Back-end (NodeJS, ExpressJS)
