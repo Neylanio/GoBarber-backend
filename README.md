@@ -16,4 +16,4 @@ This application must to do: logon, CRUD_USER and CRUD_APPOINTMENTS.
 
 ---
 
-Done by Neylanio into RocketSeat GoStack :rocket:
+Done by Neylanio on RocketSeat's GoStack :rocket:
