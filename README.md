@@ -1,6 +1,6 @@
 # __Project to manager Barbershops__
 
-## :rocket: About this project
+## About this project
 
 **Techs:**
 - Back-end (NodeJS, ExpressJS)
@@ -16,4 +16,4 @@ This application must to do: logon, CRUD_USER and CRUD_APPOINTMENTS.
 
 ---
 
-Done by Neylanio into RocketSeat GoStack :wave: :rocket:
+Done by Neylanio into RocketSeat GoStack :rocket:
