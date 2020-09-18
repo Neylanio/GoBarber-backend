@@ -36,7 +36,7 @@ describe('UpdateUserAvatar', () => {
       password: "123456"
     })
 
-    expect(updateUserAvatarService.execute({
+    await expect(updateUserAvatarService.execute({
       user_id: 'non-existing-user',
       avatarFileName: "avatar.jpg"
     })).rejects.toBeInstanceOf(AppError);
