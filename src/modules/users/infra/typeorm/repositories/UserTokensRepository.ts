@@ -23,7 +23,6 @@ class UserTokensRepository implements IUserTokensRepository {
     await this.ormRepository.save(userToken);
 
     return userToken;
-
   }
 
 }
