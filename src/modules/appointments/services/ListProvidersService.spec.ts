@@ -13,7 +13,7 @@ describe('ListProviders', () => {
     listProvidersService = new ListProvidersService(fakeUsersRepository);
   })
 
-  it('should be able to lit the providers ', async () => {
+  it('should be able to list the providers ', async () => {
     const user1 = await fakeUsersRepository.create({
       email: "fulano@gmail.com",
       name: "fulano",
