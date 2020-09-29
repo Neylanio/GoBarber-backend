@@ -5,10 +5,13 @@ import ProvidersController from '../controllers/ProvidersController';
 
 import ProviderMonthAvailabilityController from '../controllers/ProviderMonthAvailabilityController';
 import ProviderDayAvailabilityController from '../controllers/ProviderDayAvailabilityController';
+import ProviderAppointmentsController from '../controllers/ProviderAppointmentsController';
 
 const providersRouter = Router();
 
 const providersController = new ProvidersController();
+
+const providerAppointmentsController = new ProviderAppointmentsController();
 const providerMonthAvailabilityController = new ProviderMonthAvailabilityController();
 const providerDayAvailabilityController = new ProviderDayAvailabilityController();
 
