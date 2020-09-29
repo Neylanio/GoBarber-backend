@@ -11,7 +11,6 @@ const providersRouter = Router();
 
 const providersController = new ProvidersController();
 
-const providerAppointmentsController = new ProviderAppointmentsController();
 const providerMonthAvailabilityController = new ProviderMonthAvailabilityController();
 const providerDayAvailabilityController = new ProviderDayAvailabilityController();
 
