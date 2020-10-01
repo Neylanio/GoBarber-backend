@@ -1,5 +1,5 @@
 import { inject, injectable } from 'tsyringe';
-import { differenceInHours, addHours, isAfter } from 'date-fns';
+import { differenceInHours } from 'date-fns';
 
 // import AppError from '@shared/errors/AppError';
 
@@ -7,7 +7,6 @@ import AppError from '@shared/errors/AppError';
 import IUsersRepository from '../repositories/IUsersRepository';
 import IUserTokensRepository from '../repositories/IUserTokensRepository';
 import IHashProvider from '../providers/HashProvider/models/IHashProvider';
-import FakeHashProvider from '../providers/HashProvider/fakes/FakeHashProvider';
 
 interface IRequest {
   token: string;
