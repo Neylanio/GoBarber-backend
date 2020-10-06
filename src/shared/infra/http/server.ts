@@ -33,7 +33,7 @@ app.use(
 
     return response.status(500).json({
       status: 'error',
-      message: err.message,
+      message: 'Internal Server Error',
     });
   },
 );
