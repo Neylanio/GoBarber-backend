@@ -6,7 +6,6 @@ import ProvidersController from '../controllers/ProvidersController';
 
 import ProviderMonthAvailabilityController from '../controllers/ProviderMonthAvailabilityController';
 import ProviderDayAvailabilityController from '../controllers/ProviderDayAvailabilityController';
-import ProviderAppointmentsController from '../controllers/ProviderAppointmentsController';
 
 const providersRouter = Router();
 
