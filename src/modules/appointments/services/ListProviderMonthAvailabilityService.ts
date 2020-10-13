@@ -1,7 +1,7 @@
-import { injectable, inject } from "tsyringe";
+import { injectable, inject } from 'tsyringe';
 
+import { getDaysInMonth, getDate, isAfter } from 'date-fns';
 import IAppointmentsRespoitory from '../repositories/IAppointmentsRespoitory';
-import { getDaysInMonth, getDate } from "date-fns";
 
 interface IRequest {
   provider_id: string;
@@ -9,7 +9,7 @@ interface IRequest {
   year: number;
 }
 
-type IResponse = Array <{
+type IResponse = Array<{
   day: number;
   available: boolean;
 }>;
@@ -19,14 +19,20 @@ export default class ListProviderMonthAvailabilityService {
   constructor(
     @inject('AppointmentsRepository')
     private appointmentsRespoitory: IAppointmentsRespoitory,
-  ){}
+  ) {}
 
-  public async execute({ provider_id, month, year }: IRequest): Promise<IResponse> {
-    const appointments = await this.appointmentsRespoitory.findAllInMonthFromProvider({
-      provider_id,
-      month,
-      year,
-    });
+  public async execute({
+    provider_id,
+    month,
+    year,
+  }: IRequest): Promise<IResponse> {
+    const appointments = await this.appointmentsRespoitory.findAllInMonthFromProvider(
+      {
+        provider_id,
+        month,
+        year,
+      },
+    );
 
     const numberOfDaysInMonth = getDaysInMonth(new Date(year, month - 1));
 
@@ -36,15 +42,17 @@ export default class ListProviderMonthAvailabilityService {
     );
 
     const availability = eachDayArray.map(day => {
+      const compareDate = new Date(year, month - 1, day, 23, 59, 59);
+
       const appointmentsInDay = appointments.filter(appointment => {
         return getDate(appointment.date) === day;
       });
 
       return {
         day,
-        available: appointmentsInDay.length < 10,
-      }
-
+        available:
+          isAfter(compareDate, new Date()) && appointmentsInDay.length < 10,
+      };
     });
 
     return availability;
