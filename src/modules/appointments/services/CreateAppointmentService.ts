@@ -4,9 +4,9 @@ import { inject, injectable } from 'tsyringe';
 import AppError from '@shared/errors/AppError';
 
 import Appointment from '@modules/appointments/infra/typeorm/entities/Appointment';
-import IAppointmentsRespository from '../repositories/IAppointmentsRespoitory';
 import INotificationsRepository from '@modules/notifications/repositories/INotificationsRepository';
 import ICacheProvider from '@shared/container/providers/CacheProvider/models/ICacheProvider';
+import IAppointmentsRespository from '../repositories/IAppointmentsRespoitory';
 
 interface IRequest {
   provider_id: string;
@@ -25,25 +25,32 @@ class CreateAppointmentService {
 
     @inject('CacheProvider')
     private cacheProvider: ICacheProvider,
-  ){}
+  ) {}
 
-  public async execute({ provider_id, user_id, date }: IRequest): Promise<Appointment> {
+  public async execute({
+    provider_id,
+    user_id,
+    date,
+  }: IRequest): Promise<Appointment> {
     const appointmentDate = startOfHour(date);
 
-    if(isBefore(appointmentDate, Date.now())){
+    if (isBefore(appointmentDate, Date.now())) {
       throw new AppError("You can't create an appointment on a past date");
     }
 
-    if(user_id === provider_id){
+    if (user_id === provider_id) {
       throw new AppError("You can't create an appointment with yourself");
     }
 
-    if(getHours(appointmentDate) < 8 || getHours(appointmentDate) > 17){
-      throw new AppError("You can only create appointments between 8am and 5pm");
+    if (getHours(appointmentDate) < 8 || getHours(appointmentDate) > 17) {
+      throw new AppError(
+        'You can only create appointments between 8am and 5pm',
+      );
     }
 
     const findAppointmentInSameDate = await this.appointmentsRepository.findByDate(
       appointmentDate,
+      provider_id,
     );
 
     if (findAppointmentInSameDate) {
@@ -64,7 +71,10 @@ class CreateAppointmentService {
     });
 
     await this.cacheProvider.invalidate(
-      `provider-appointments:${provider_id}:${format(appointmentDate, 'yyyy-M-d')}`
+      `provider-appointments:${provider_id}:${format(
+        appointmentDate,
+        'yyyy-M-d',
+      )}`,
     );
 
     return appointment;

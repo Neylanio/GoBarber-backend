@@ -34,14 +34,16 @@ class User {
   updated_at: Date;
 
   @Expose({ name: 'avatar_url' })
-  getAvatar_url(): string | null{
-    if(!this.avatar) {
+  getAvatar_url(): string | null {
+    if (!this.avatar) {
       return null;
     }
 
-    switch(uploadConfig.driver){
+    switch (uploadConfig.driver) {
       case 'disk':
-        return this.avatar ? `${process.env.APP_API_URL}/files/${this.avatar}` : this.avatar;
+        return this.avatar
+          ? `${process.env.APP_API_URL}/files/${this.avatar}`
+          : this.avatar;
 
       case 's3':
         return `https://${uploadConfig.config.aws.bucket}.s3.us-east-2.amazonaws.com/${this.avatar}`;
@@ -49,7 +51,6 @@ class User {
       default:
         return null;
     }
-
   }
 }
 
