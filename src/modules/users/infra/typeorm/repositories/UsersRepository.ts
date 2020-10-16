@@ -7,23 +7,24 @@ import ICreateUserDTO from '@modules/users/dtos/ICreateUserDTO';
 import IFindAllProvidersDTO from '@modules/users/dtos/IFindAllProvidersDTO';
 
 class UsersRepository implements IUsersRepository {
-
   private ormRepository: Repository<User>;
 
   constructor() {
     this.ormRepository = getRepository(User);
   }
 
-  public async findAllProviders({ except_user_id }: IFindAllProvidersDTO): Promise<User[]> {
+  public async findAllProviders({
+    except_user_id,
+  }: IFindAllProvidersDTO): Promise<User[]> {
     let users: User[];
 
-    if(except_user_id) {
+    if (except_user_id) {
       users = await this.ormRepository.find({
         where: {
-          id: Not(except_user_id)
+          id: Not(except_user_id),
         },
       });
-    }else {
+    } else {
       users = await this.ormRepository.find();
     }
 
@@ -44,11 +45,15 @@ class UsersRepository implements IUsersRepository {
     return findUser;
   }
 
-  public async create({ email, name, password }: ICreateUserDTO): Promise<User> {
+  public async create({
+    email,
+    name,
+    password,
+  }: ICreateUserDTO): Promise<User> {
     const user = this.ormRepository.create({
       email,
       name,
-      password
+      password,
     });
 
     await this.ormRepository.save(user);
@@ -56,9 +61,8 @@ class UsersRepository implements IUsersRepository {
   }
 
   public async save(user: User): Promise<User> {
-    return await this.ormRepository.save(user);
+    return this.ormRepository.save(user);
   }
-
 }
 
 export default UsersRepository;

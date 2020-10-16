@@ -1,5 +1,4 @@
-import IMailProviderTemplate from "../models/IMailTemplateProvider";
-import IMailTemplateProvider from "../models/IMailTemplateProvider";
+import IMailTemplateProvider from '../models/IMailTemplateProvider';
 
 export default class FakeMailTemplateProvider implements IMailTemplateProvider {
   public async parse(): Promise<string> {

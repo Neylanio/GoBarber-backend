@@ -1,19 +1,21 @@
 import 'reflect-metadata';
 
 import FakeAppointmentsRepository from '@modules/appointments/repositories/fakes/FakeAppointmentsRepository';
-import ListProviderAppointmentsService from './ListProviderAppointmentsService';
 import FakeCacheProvider from '@shared/container/providers/CacheProvider/fakes/FakeCacheProvider';
+import ListProviderAppointmentsService from './ListProviderAppointmentsService';
 
 let fakeAppointmentsRepository: FakeAppointmentsRepository;
 let fakeCacheProvider: FakeCacheProvider;
 let listProviderAppointmentsService: ListProviderAppointmentsService;
 
 describe('ListProviderAppointments', () => {
-
   beforeEach(() => {
     fakeAppointmentsRepository = new FakeAppointmentsRepository();
     fakeCacheProvider = new FakeCacheProvider();
-    listProviderAppointmentsService = new ListProviderAppointmentsService(fakeAppointmentsRepository, fakeCacheProvider);
+    listProviderAppointmentsService = new ListProviderAppointmentsService(
+      fakeAppointmentsRepository,
+      fakeCacheProvider,
+    );
   });
 
   it('should be able to list the appointments on a specific day ', async () => {
@@ -36,9 +38,6 @@ describe('ListProviderAppointments', () => {
       year: 2020,
     });
 
-    expect(appointments).toEqual([
-      appointment1,
-      appointment2,
-    ])
+    expect(appointments).toEqual([appointment1, appointment2]);
   });
 });

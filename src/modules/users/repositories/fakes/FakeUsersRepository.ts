@@ -6,13 +6,14 @@ import ICreateUserDTO from '@modules/users/dtos/ICreateUserDTO';
 import IFindAllProvidersDTO from '../../dtos/IFindAllProvidersDTO';
 
 class FakeUsersRepository implements IUsersRepository {
-
   private users: User[] = [];
 
-  public async findAllProviders({ except_user_id }: IFindAllProvidersDTO): Promise<User[]> {
+  public async findAllProviders({
+    except_user_id,
+  }: IFindAllProvidersDTO): Promise<User[]> {
     let { users } = this;
 
-    if(except_user_id){
+    if (except_user_id) {
       users = this.users.filter(item => item.id !== except_user_id);
     }
 
@@ -32,7 +33,6 @@ class FakeUsersRepository implements IUsersRepository {
   }
 
   public async create(userData: ICreateUserDTO): Promise<User> {
-
     const user = new User();
 
     Object.assign(user, { id: uuid() }, userData);
@@ -47,7 +47,6 @@ class FakeUsersRepository implements IUsersRepository {
     this.users[userIndex] = user;
     return user;
   }
-
 }
 
 export default FakeUsersRepository;

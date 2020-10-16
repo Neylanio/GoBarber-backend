@@ -9,8 +9,7 @@ import ISendMailDTO from '../dtos/ISendMailDTO';
 import IMailProviderTemplate from '../../MailTemplateProvider/models/IMailTemplateProvider';
 
 @injectable()
-export default class SESMailProvider implements IMailProvider{
-
+export default class SESMailProvider implements IMailProvider {
   private client: Transporter;
 
   constructor(
@@ -20,13 +19,17 @@ export default class SESMailProvider implements IMailProvider{
     this.client = nodemailer.createTransport({
       SES: new aws.SES({
         apiVersion: '2010-12-01',
-        region: 'us-east-2'
+        region: 'us-east-2',
       }),
     });
   }
 
-  public async sendMail({ to, from, subject, templateData }: ISendMailDTO): Promise<void> {
-
+  public async sendMail({
+    to,
+    from,
+    subject,
+    templateData,
+  }: ISendMailDTO): Promise<void> {
     const { email, name } = mailConfig.defaults.from;
 
     await this.client.sendMail({
@@ -36,11 +39,10 @@ export default class SESMailProvider implements IMailProvider{
       },
       to: {
         name: to.name,
-        address: to.email
+        address: to.email,
       },
       subject,
-      html: await this.mailTemplateProvider.parse(templateData)
+      html: await this.mailTemplateProvider.parse(templateData),
     });
-
   }
 }

@@ -37,6 +37,7 @@
       //     "prefixWithI": "always"
       //   }
       // ],
+      "@typescript-eslint/ban-types": "off",
       "@typescript-eslint/camelcase": "off",
       "prettier/prettier": "error",
       "class-methods-use-this": "off",
