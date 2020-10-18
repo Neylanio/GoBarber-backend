@@ -23,7 +23,7 @@ profileRouter.put(
         then: Joi.string().required(),
         otherwise: Joi.forbidden(),
       }),
-      password_confirmation: Joi.required().valid(Joi.ref('password')),
+      password_confirmation: Joi.valid(Joi.ref('password')),
     },
   }),
   profileController.update,
