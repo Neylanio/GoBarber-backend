@@ -9,7 +9,8 @@
     "start": "ts-node src/shared/infra/http/server.ts",
     "commit": "git cz",
     "typeorm": "ts-node-dev -r tsconfig-paths/register ./node_modules/typeorm/cli.js",
-    "test": "jest"
+    "test": "jest",
+    "test:coverage": "jest --coverage"
   },
   "dependencies": {
     "aws-sdk": "^2.766.0",

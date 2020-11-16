@@ -5,5 +5,5 @@ ormconfig.json
 .env
 dist
 coverage
-build/
-.vscode/
+build
+.vscode
