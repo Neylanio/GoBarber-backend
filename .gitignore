@@ -3,3 +3,7 @@ tmp/*
 ormconfig.json
 !tmp/.gitkeep
 .env
+dist
+coverage
+build/
+.vscode/

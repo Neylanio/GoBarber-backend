@@ -4,8 +4,8 @@ interface IMailConfig {
     from: {
       email: string;
       name: string;
-    }
-  }
+    };
+  };
 }
 
 export default {
@@ -14,7 +14,7 @@ export default {
   defaults: {
     from: {
       email: 'neylaniogomes@fidelital.com.br',
-      name: 'Neylanio'
-    }
-  }
+      name: 'Neylanio',
+    },
+  },
 } as IMailConfig;
